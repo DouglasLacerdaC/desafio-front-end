@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Desafio para vaga de Front-end">
+
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg" />
+  <title>Desafio Front-end</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./styles/global.css">
+</head>
+
+<body class="bg-zinc-900 text-zinc-50 pb-32">
+  <svg class="fixed -top-full -z-10 left-1/2 -translate-x-1/2" width="2139" height="2092" viewBox="0 0 2139 2092" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#filter0_f_10_2)">
+      <ellipse cx="1069.64" cy="1046" rx="659.222" ry="635.791" fill="#067CE3" fill-opacity="0.19"/>
+    </g>
+    <defs>
+      <filter id="filter0_f_10_2" x="0.71283" y="0.50885" width="2137.84" height="2090.98" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+        <feGaussianBlur stdDeviation="204.85" result="effect1_foregroundBlur_10_2"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <header class="fixed w-full top-0 backdrop-blur-lg">
+    <div class="p-6 w-full max-w-7xl mx-auto flex items-center justify-between border-b border-zinc-50/5">
+      <a href="#">
+        <img width="45" class="rounded-lg" src="./assets/icon.png" alt="">
+      </a>
+
+      <a href="https://douglaslc.com.br/" target="_blank" class="py-2 px-6 rounded-md text-sm bg-sky-600 border border-sky-500">
+        Conheça meu portfólio
+      </a>
+    </div>
+  </header>
+
+  <section class="w-full min-h-[400px] md:min-h-[550px] flex items-end">
+    <div class="pb-16 md:pb-32 p-6 w-full max-w-5xl mx-auto flex flex-col gap-12 justify-center items-center text-center">
+      <div class="space-y-2 md:space-y-4">
+        <h1 class="text-3xl md:text-6xl font-bold">
+          Consulte o CNPJ de empresas
+        </h1>
+        <p class="text-lg text-zinc-50/60">
+          Encontre boas oportunidades de negócio ao consultar o CNPJ
+        </p>
+      </div>
+
+      <form id="cnpjForm" class="relative w-full max-w-lg">
+        <input
+          id="cnpjInput"
+          class="w-full py-3 px-10 pl-4 lg:pl-10 font-light rounded-full bg-white/10 transition duration-500 text-zinc-50 ring-inset focus:ring-2 ring-sky-700 placeholder:text-zinc-50/60 outline-none"
+          placeholder="CNPJ"
+          type="text"
+          data-mask="00.000.000/0000-00"
+        />
+
+        <button type="submit" class="flex gap-2 items-center py-1 px-6 rounded-full transition text-sm bg-sky-600 border border-sky-500 absolute right-2 top-1/2 -translate-y-1/2 hover:bg-sky-500">
+          <i class="ph ph-magnifying-glass text-lg"></i>
+          Pesquisar
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <section data-empty="visible" class="px-6 hidden data-[empty=visible]:block">
+    <div class="py-10 space-y-8 grid place-items-center min-h-96 w-full max-w-7xl mx-auto rounded-lg border border-zinc-800 bg-zinc-800/50 bg-gradient-to-r from-zinc-900 to-zinc-900">
+      <lottie-player
+        src="./assets/lotties/waiting.json"
+        background="transparent"
+        speed="1"
+        style="width: 200px; height: 200px"
+        direction="1"
+        playMode="normal"
+        loop
+        autoplay>
+      </lottie-player>
+
+      <div class="text-center space-y-2">
+        <h3 class="text-lg text-sky-500">Nenhuma empresa encontrada!</h3>
+        <p class="max-w-96 text-sm font-light text-zinc-50/60">
+          Por enquanto não encontramos nenhuma empresa! Utilize o campo acima para fazer uma nova busca.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section data-result="hidden" class="px-6 py-10 hidden data-[result=visible]:block">
+    <form id="editForm" class="w-full max-w-7xl mx-auto space-y-6 border border-white/5 rounded-lg p-6 lg:p-10">
+      <h2 class="text-sm font-grotesk text-white/70">Informações da empresa</h2>
+
+      <div class="space-y-5">
+        <div class="flex flex-col lg:flex-row lg:items-center gap-5">
+          <div class="grid place-items-center h-12 w-12 rounded-lg bg-sky-500 text-white">
+            <i class="ph ph-building-office text-xl"></i>
+          </div>
+          <h4 class="text-xl lg:text-3xl" id="razaoSocial">
+            OPEN KNOWLEDGE BRASIL
+          </h4>
+
+          <p class="text-nowrap">-----</p>
+
+          <div class="flex gap-2 items-center">
+            <span class="text-zinc-500 text-sm lg:hidden">CNPJ</span>
+            <h3 class="text-2xl font-grotesk" id="cnpj">
+              19131243000197
+            </h3>
+          </div>
+        </div>
+        
+        <div class="border-b border-white/5"></div>
+
+        <div class="grid lg:grid-cols-3 gap-6 py-5">
+          <div class="p-2 flex flex-col gap-2 lg:col-span-3">
+            <label class="text-sm font-light text-zinc-400">Atividade principal</label>
+            <input id="cnae_fiscal_descricao" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2">
+            <label class="text-sm font-light text-zinc-400">Nome fantasia</label>
+            <input id="nome_fantasia" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2">
+            <label class="text-sm font-light text-zinc-400">Situação cadastral</label>
+            <input id="data_situacao_cadastral" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2">
+            <label class="text-sm font-light text-zinc-400">Início de atividades</label>
+            <input id="data_inicio_atividade" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2">
+            <label class="text-sm font-light text-zinc-400">Status</label>
+            <input id="descricao_situacao_cadastral" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2">
+            <label class="text-sm font-light text-zinc-400">Telefone</label>
+            <input id="ddd_telefone_1" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2">
+            <label class="text-sm font-light text-zinc-400">E-mail</label>
+            <input id="email" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+
+          <div class="p-2 flex flex-col gap-2 lg:col-span-3">
+            <label class="text-sm font-light text-zinc-400">Endereço</label>
+            <input id="endereco" class="px-4 py-2 rounded-md bg-white/10 border-white/20" value="" type="text">
+          </div>
+        </div>
+
+        <div class="border-b border-white/5"></div>
+
+        <div class="space-y-4" id="cnaes_secundarios-list">
+          <h3 class="text-sm font-grotesk text-white/70">Ações da empresa:</h3>
+
+          <ul class="space-y-3" id="cnaes_secundarios"></ul>
+        </div>
+
+        <div class="space-y-4" id="qsa-list">
+          <h3 class="text-sm font-grotesk text-white/70">Sócios da empresa:</h3>
+
+          <ul class="grid lg:grid-cols-3 gap-4" id="qsa"></ul>
+        </div>
+
+        <div class="pt-4 flex justify-end">
+          <button class="py-2 px-6 rounded-md text-sm bg-sky-600 border border-sky-500">
+            Editar informações
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+  
+  <!-- LOTTIE FILES -->
+  <script src="./libs//lottie-files/lottie-player.js"></script>
+  <!-- TAILWIND -->
+  <script src="./libs/tailwind/index.js"></script>
+  <!-- JQUERY -->
+  <script src="./libs/jquery/jquery.min.js"></script>
+  <!-- JQUERY INPUT MASK -->
+  <script src="./libs/jquery-mask/jquery.mask.min.js"></script>
+  <!-- PHOSPHOR ICONS -->
+  <script src="./libs/phosphor-icons/index.js"></script>
+
+  <script src="./scripts/index.js" type="module"></script>
+</body>
+</html>
