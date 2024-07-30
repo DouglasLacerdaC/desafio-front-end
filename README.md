@@ -19,7 +19,7 @@ Antes de começar você vai precisar ter instalado na sua máquina a ferramenta 
 1. Insira a url em seu navegador
 
 ```
-    https://
+    https://douglaslacerdac.github.io/desafio-front-end/
 ```
 
 ## 🖥️ Executando o projeto em desenvolvimento
